@@ -7,23 +7,15 @@ import { ChainablePromiseElement } from 'webdriverio';
  */
 class CreatePage {
 
-    public get RadioMister () {
-        return $('#id_gender1');
-    }
-
-    public get RadioMrs () {
-        return $('#uniform-id_gender2');
-    }
-
-    public get inputFirstName () {
-        return $('#customer_firstname');
-    }
+    private get RadioMister() { return $('#id_gender1'); }
+    private get RadioMrs() { return $('#uniform-id_gender2'); }
+    private get inputFirstName() { return $('#customer_firstname'); }
 
 
     public get inputLastName () {
         return $('#customer_lastname');
     }
-    
+
     public get inputPasswd () {
         return $('#passwd');
     }
@@ -38,9 +30,8 @@ class CreatePage {
 
 
     public get cbxMonths () {
-        //return $('#months');
         return $('#uniform-months');
-        
+
     }
 
     public cbxMonth (month : string) {
@@ -58,7 +49,7 @@ class CreatePage {
             case 'November': return $(".//select[@id='months']//option[@value='11']");
             case 'December': return $(".//select[@id='months']//option[@value='12']");
         }
-        
+
     }
 
     public get cbxYears () {
@@ -77,7 +68,7 @@ class CreatePage {
     public get inputAddress1 () {
         return $('#address1');
     }
-    
+
     public get inputAddress2 () {
         return $('#address2');
     }
@@ -126,23 +117,21 @@ class CreatePage {
     public get btnRegister () {
         return $('#submitAccount');
     }
-    
-    
 
     public get textMyAccount () {
         return $(".//h1[text()='My account']");
     }
-    
-    
+
+
 
     //////////////////////////////////////////
     //click and sets
     public async click_RadioMister(){
-        await (await this.RadioMister).click();
+        await this.RadioMister.click();
     }    
 
     public async click_RadioMrs(){
-        await (await this.RadioMrs).click();
+        await this.RadioMrs.click();
     }    
 
     public async set_FirstName(name: string) {
@@ -160,9 +149,9 @@ class CreatePage {
         await this.inputPasswd.setValue(value);
     }
 
-    
+
     /////////////////////////////////////
-    
+
     public async set_Day(day: string) {
         await this.cbxDays.scrollIntoView();
         await this.cbxDays.click();
@@ -184,8 +173,8 @@ class CreatePage {
         let value = year ?? "2017";
         await this.cbxYear(value).click();
     }
-    
-    
+
+
     /////////////////////////////////////////
 
 
@@ -209,13 +198,12 @@ class CreatePage {
         let value = city ?? "New York";
         await this.inputCity.setValue(value);
     }
-    
+
 
     public async set_State(state: string) {
         await this.cbxStates.click();
         let value = state ?? "Alaska";
         await this.cbxState(value).click();
-        //await browser.pause(10000);
     }
 
     public async set_postCode(code: string) {
@@ -228,15 +216,14 @@ class CreatePage {
         await this.cbxCountries.click();
         let value = country ?? "United States";
         await this.cbxCountry(value).click();
-        //await browser.pause(10000);
     }
-    
+
 
     public async set_Other(other: string) {
         let value = other ?? "Add. information";
         await this.inputOther.setValue(value);
     }
-    
+
     public async set_Phone(numb: string) {
         let value = numb ?? "+36522415151651";
         await this.inputPhone.setValue(value);
@@ -252,12 +239,12 @@ class CreatePage {
         await this.inputAlias.setValue(value);
     }
 
-    
+
     public async click_btnRegister(){
         await this.btnRegister.click();
     } 
-    
-    
+
+
 
     public async setAllInformation(object){
         switch (object.gender){
@@ -271,7 +258,7 @@ class CreatePage {
         await this.set_Day(object.day);
         await this.set_Month(object.month);
         await this.set_Year(object.year);
-        
+
         await this.set_Company(object.company);
         await this.set_Adress1(object.adress1);
         await this.set_Adress2(object.adress2);
@@ -280,7 +267,7 @@ class CreatePage {
         await this.set_State(object.State);
         await this.set_postCode(object.postcode);
 
-        
+
         await this.set_Countries(object.country);
         await this.set_Other(object.other);
 
@@ -288,8 +275,8 @@ class CreatePage {
         await this.set_MobPhone(object.mobPhone);
         await this.set_Alias(object.alias);
     }
-    
+
 }
 
 
-export default new CreatePage();
+export default new CreatePage(); 

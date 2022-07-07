@@ -53,7 +53,6 @@ class LoginPage {
 
     public async set_loginEmailCreate(email: string) {
         await this.inputEmailCreate.setValue(email);
-        await browser.pause(5000);
     }
 
 
@@ -67,12 +66,11 @@ class LoginPage {
 
     public async click_btnSubmit() {
         await this.btnSubmit().click();
-        await browser.pause(5000);
     }
 
     public async click_btnSubmitCreate() {
         await this.btnSubmitCreate().click();
-        await browser.pause(5000);
+        
     }
 
 

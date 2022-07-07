@@ -27,10 +27,11 @@ class Page {
     ///////////////////////////////////////////////////////////
     public open () {
         //return browser.url(`https://the-internet.herokuapp.com/${path}`)
-        return browser.url('http://automationpractice.com/index.php');
+        return browser.url('http://automationpractice.com/index.php')
     }
 
     public async click_login(){
+        await this.login.waitForDisplayed();
         await this.login.click();
     }
 
