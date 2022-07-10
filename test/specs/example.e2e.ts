@@ -6,7 +6,7 @@ import CreatePage from '../../UI/pageobjects/create.page';
 import UserData from './userdata';
 
 
-/*
+
 describe('Main Page', () => {
 
     it('Load main page', async () => {
@@ -56,7 +56,7 @@ describe('Login Page. Already existed email. Error appears ', () => {
 });
 
 
-*/
+
 describe('Login Page. Success User registeration ', () => {
 
     it('Create new user. User created successfully', async () => {
