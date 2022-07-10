@@ -11,7 +11,7 @@ class UserData {
     public newEmail = this.createGuid12() + "@gmail.com";
 
 
-    public arrGender = ["mr", "mrs"];
+    public arrGender = ["Mr.", "Mrs."];
     //cad do same with other fields
     public gender = this.arrGender[Math.floor(Math.random() * this.arrGender.length)];
 
@@ -21,7 +21,7 @@ class UserData {
     public password = this.createGuid12();
 
     public day = "10";
-    public month = "April";
+    public month = "4";
     public year = "2000";
 
 
@@ -30,9 +30,9 @@ class UserData {
     public adress2 = "Shevchenka str.";
 
     public city = "New York";
-    public State = "Alaska";
+    public State = "2";
     public postcode = "79065";
-    public country = "United States";
+    public country = "21";
     public other = "Other information";
 
     public phone = "+655225544234";
