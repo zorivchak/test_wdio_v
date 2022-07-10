@@ -8,6 +8,10 @@ class Locators {
         return $(element);
     }
 
+    public getLocatorByText(text){
+        return "//*[text()='" + text + "']";
+    }
+
 }
 
 

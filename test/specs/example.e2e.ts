@@ -11,6 +11,19 @@ describe('Main Page', () => {
 
     it('Load main page', async () => {
         await Page.open();
+        await Page.click_women();
+        
+       
+    });
+});
+
+
+/*
+
+describe('Main Page', () => {
+
+    it('Load main page', async () => {
+        await Page.open();
         await expect(Page.mainLogo).toBeExisting();
        
     });
@@ -76,4 +89,4 @@ describe('Login Page. Success User registeration ', () => {
 
 
 
-
+*/

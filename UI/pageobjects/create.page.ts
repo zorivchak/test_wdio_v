@@ -1,5 +1,6 @@
 import { ChainablePromiseElement } from 'webdriverio';
 import Locators from './locators';
+import Userdata from '../../test/specs/userdata';
 
 
 /**
@@ -10,8 +11,7 @@ class CreatePage {
 
 
 
-    radioMister= '#id_gender1';
-    radioMrs = '#uniform-id_gender2'; 
+    radioGender = Userdata.gender;
 
     inputFirstName = '#customer_firstname';
     inputLastName = '#customer_lastname';
@@ -42,15 +42,9 @@ class CreatePage {
     //////////////////////////////////////////
     //click and sets
     
-    public async click_RadioMister(){
-        await Locators.getElement(this.radioMister).click();
+    public async click_RadioGender(gender){
+        await Locators.getElement(Locators.getLocatorByText(gender)).click();
     }    
-
-    public async click_RadioMrs(){
-        await Locators.getElement(this.radioMrs).click();
-    } 
-    
- 
 
     public async set_FirstName(name: string = "Firstname") {
         await Locators.getElement(this.inputFirstName).setValue(name);
@@ -144,10 +138,7 @@ class CreatePage {
 
 
     public async setPersonalInformation(object){
-        switch (object.gender){
-            case object.arrGender[0]: await this.click_RadioMister(); break;
-            case object.arrGender[1]: await this.click_RadioMrs(); break;
-        }
+        await this.click_RadioGender(object.gender);
         
         await this.set_FirstName(object.firstName);
         await this.set_LastName(object.lastName);

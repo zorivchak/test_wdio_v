@@ -19,7 +19,13 @@ class LoginPage {
     btnSubmit = '#SubmitLogin';
     btnSubmitCreate = '#SubmitCreate'
     textErrorEmail ='#create_account_error';
-    textErrorExistedEmail = ".//li[text() = 'An account using this email address has already been registered. Please enter a valid password or request a new one. '] ";
+    
+
+    arrErrorMessages = ["Invalid email address.",
+                        "An account using this email address has already been registered. Please enter a valid password or request a new one. "];
+
+
+    textErrorExistedEmail = ".//li[text() = '"+ this.arrErrorMessages[1] +"'] ";                        
    
     /**
      * a method to encapsule automation code to interact with the page

@@ -11,7 +11,7 @@ class UserData {
     public newEmail = this.createGuid12() + "@gmail.com";
 
 
-    public arrGender = ["Mr.", "Mrs."];
+    public arrGender = [" Mr. ", " Mrs. "];
     //cad do same with other fields
     public gender = this.arrGender[Math.floor(Math.random() * this.arrGender.length)];
 

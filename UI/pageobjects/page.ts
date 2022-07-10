@@ -12,6 +12,7 @@ class Page {
 
     mainLogo = '.img-responsive';
     login = '.login';
+    women = 'Women';
 
     ///////////////////////////////////////////////////////////
     public open () {
@@ -22,6 +23,12 @@ class Page {
     public async click_login(){
         await Locators.getElement(this.login).waitForDisplayed();
         await Locators.getElement(this.login).click();
+    }
+
+    public async click_women(){
+        //let locator = await Locators.getLocatorByText(this.women);
+        await Locators.getElement(Locators.getLocatorByText(this.women)).click();
+        await browser.pause(10000);
     }
 
 }
