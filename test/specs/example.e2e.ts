@@ -7,24 +7,14 @@ import UserData from './userdata';
 
 
 
-describe('Main Page', () => {
-
-    it('Load main page', async () => {
-        await Page.open();
-        await Page.click_women();
-        
-       
-    });
-});
 
 
 /*
-
 describe('Main Page', () => {
 
     it('Load main page', async () => {
         await Page.open();
-        await expect(Page.mainLogo).toBeExisting();
+        await expect(Page.locatorMainLogo()).toBeExisting();
        
     });
 });
@@ -49,12 +39,12 @@ describe('Login Page. Empty/Wrong email address. Error appears ', () => {
 
     afterEach(async () => {
         await LoginPage.click_btnSubmitCreate();
-        await expect(LoginPage.textErrorEmail).toBeExisting();
+        await expect(LoginPage.locatorErrorEmail()).toBeExisting();
     });
 });
 
 
-
+*/
 
 describe('Login Page. Already existed email. Error appears ', () => {
 
@@ -63,12 +53,12 @@ describe('Login Page. Already existed email. Error appears ', () => {
         await Page.click_login();
         await LoginPage.set_loginEmailCreate(UserData.existedEmail);
         await LoginPage.click_btnSubmitCreate();
-        await expect(LoginPage.textErrorExistedEmail).toBeExisting();
+        await expect(LoginPage.locatorTextErrorExistedEmail()).toBeExisting();
     });
 
 });
 
-
+/*
 
 describe('Login Page. Success User registeration ', () => {
 
@@ -85,7 +75,6 @@ describe('Login Page. Success User registeration ', () => {
     });
 
 });
-
 
 
 

@@ -10,13 +10,12 @@ class Page {
     * Opens a sub page of the page
     */
 
-    mainLogo = '.img-responsive';
+    mainLogo = '.logo.img-responsive';
     login = '.login';
     women = 'Women';
 
     ///////////////////////////////////////////////////////////
     public open () {
-        //return browser.url(`https://the-internet.herokuapp.com/${path}`)
         return browser.url('/')
     }
 
@@ -25,11 +24,10 @@ class Page {
         await Locators.getElement(this.login).click();
     }
 
-    public async click_women(){
-        //let locator = await Locators.getLocatorByText(this.women);
-        await Locators.getElement(Locators.getLocatorByText(this.women)).click();
-        await browser.pause(10000);
+    public async locatorMainLogo(){
+        return await Locators.getElement(this.mainLogo);
     }
+
 
 }
 

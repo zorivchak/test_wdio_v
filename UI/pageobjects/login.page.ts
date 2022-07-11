@@ -51,6 +51,15 @@ class LoginPage {
     public async click_btnSubmitCreate() {
         await Locators.getElement(this.btnSubmitCreate).click();
     }
+
+    public async locatorErrorEmail() {
+        return await Locators.getElement(this.textErrorEmail);
+    }
+    public async locatorTextErrorExistedEmail() {
+        return await Locators.getElement(this.textErrorExistedEmail);
+    }
+
+    
 }
 
 export default new LoginPage();
