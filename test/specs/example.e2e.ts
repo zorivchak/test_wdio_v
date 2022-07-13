@@ -1,6 +1,8 @@
-import Page from  '../../UI/pageobjects/page';
-import LoginPage from '../../UI/pageobjects/login.page';
-import CreatePage from '../../UI/pageobjects/create.page';
+import Page from  '../../UI/pageobjects/page/page';
+import LoginPage from '../../UI/pageobjects/loginPage/login.page';
+import BmCreatePage from '../../UI/BusinessModels/bm.createPage';
+import CreatePage from '../../UI/pageobjects/createPage/create.page';
+import allureReporter from '@wdio/allure-reporter';
 
 
 import UserData from './userdata';
@@ -9,16 +11,25 @@ import UserData from './userdata';
 
 
 
-/*
-describe('Main Page', () => {
 
-    it('Load main page', async () => {
+
+describe('Login Page. Already existed email. Error appears ', () => {
+
+    it('Inputs Already existed email. Empty', async () => {
+        allureReporter.addSeverity('Critical');
+        allureReporter.addFeature('Allure. Login Page. Already existed email')
         await Page.open();
-        await expect(Page.locatorMainLogo()).toBeExisting();
-       
+        await Page.click_login();
+        await LoginPage.set_loginEmailCreate(UserData.existedEmail);
+        await LoginPage.click_btnSubmitCreate();
+        await expect(LoginPage.locatorTextErrorExistedEmail()).toBeExisting();
     });
-});
 
+    it('should save a screenshot of the browser view', async () => {
+        await browser.saveScreenshot('./screenshot.png');
+    });
+
+});
 
 
 describe('Login Page. Empty/Wrong email address. Error appears ', () => {
@@ -30,10 +41,12 @@ describe('Login Page. Empty/Wrong email address. Error appears ', () => {
     });
 
     it('Inputs for user registration. Empty', async () => {
+        allureReporter.addFeature('Allure . Empty/Wrong')
         await LoginPage.set_loginEmailCreate(UserData.emptyEmail);
     });
 
     it('Inputs for user registration. WrongStr', async () => {
+        allureReporter.addFeature('Allure . Empty/Wrong')
         await LoginPage.set_loginEmailCreate(UserData.wrongEmail);
     });
 
@@ -44,38 +57,3 @@ describe('Login Page. Empty/Wrong email address. Error appears ', () => {
 });
 
 
-*/
-
-describe('Login Page. Already existed email. Error appears ', () => {
-
-    it('Inputs Already existed email. Empty', async () => {
-        await Page.open();
-        await Page.click_login();
-        await LoginPage.set_loginEmailCreate(UserData.existedEmail);
-        await LoginPage.click_btnSubmitCreate();
-        await expect(LoginPage.locatorTextErrorExistedEmail()).toBeExisting();
-    });
-
-});
-
-/*
-
-describe('Login Page. Success User registeration ', () => {
-
-    it('Create new user. User created successfully', async () => {
-        await Page.open();
-        await Page.click_login();
-        await LoginPage.set_loginEmailCreate(UserData.newEmail);
-        await LoginPage.click_btnSubmitCreate();
-        
-        await CreatePage.setAllInformation(UserData);
-        await CreatePage.click_btnRegister();
-
-        await expect(CreatePage.textMyAccount).toBeExisting();
-    });
-
-});
-
-
-
-*/

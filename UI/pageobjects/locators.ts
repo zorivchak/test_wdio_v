@@ -8,9 +8,16 @@ class Locators {
         return $(element);
     }
 
+
     public getLocatorByText(text){
-        return "//*[text()='" + text + "']";
+        return `//*[text()='${text}']`;
     }
+
+    public getLocatorByTextH1(text){
+        return `.//h1[text()='${text}']`;
+    }
+
+    
 
 }
 

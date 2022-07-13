@@ -124,8 +124,7 @@ export const config: Options.Testrunner = {
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
     baseUrl: 'http://automationpractice.com/index.php',
-    //baseUrl: 'http://localhost',
-    
+        
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
