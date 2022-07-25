@@ -11,6 +11,7 @@ import UserData from './userdata';
 import axios from "axios";
 import { petBody, petUrl, petBodyEdit, id } from '../../Api/apiData';
 import { ApiManager } from '../../Api/apiManager';
+import { findPetById } from '../../Api/controlers/petController';
 
 
 
@@ -18,17 +19,20 @@ import { ApiManager } from '../../Api/apiManager';
 
 describe('TEST API.', () => {
 
-   /* 
+   
     it('Test 1: Add new pet on the story. Id = ' + id, async () => {
-        let apiManager = new ApiManager();
-        let resp = await apiManager.setUrl(petUrl).setMetod('post').setData(petBody).send();
-        console.log("resp ___________ " + resp.data);
+        //let apiManager = new ApiManager();
+        //let resp = await apiManager.setUrl(petUrl).setMetod('post').setData(petBody).send();
+        const resp = await findPetById("1");
+        console.log(resp.data);
         console.log("resp.status: " + resp.status);
+
+
     });
 
-*/
 
 
+/*
     it('Test 1: ADD pet name. Id = ' + id, async () => {
         await axios({
             method: 'post',
@@ -37,6 +41,7 @@ describe('TEST API.', () => {
         });
     });
 
+    */
 /*
     it('Test 1: Add new pet on the story. Id = ' + id, async () => {
         let resp = await axios.post(petUrl, petBody);

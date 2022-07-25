@@ -1,19 +1,21 @@
 
-import axios from "axios";
+import axios, { Method } from "axios";
 //import { petBody, petUrl, id } from "./apiData";
-
+/*
 interface Request {
   url: string,
   method: string,
   data: object
 }
-
+*/
 
   export class ApiManager{
 
- 
+    private request;
 
-    private request:Request;
+    constructor(){
+      this.request = {};
+    }
 
 
     setUrl(url: string){
@@ -22,7 +24,7 @@ interface Request {
     }
 
     
-    setMetod(method: string){
+    setMetod(method: Method){
       this.request.method = method;
       return this;
     }
