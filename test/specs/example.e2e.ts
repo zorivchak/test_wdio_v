@@ -8,9 +8,163 @@ import allureReporter from '@wdio/allure-reporter';
 import UserData from './userdata';
 
 
+import axios from "axios";
+import { petBody, petUrl, petBodyEdit, id } from '../../Api/apiData';
+import { ApiManager } from '../../Api/apiManager';
 
 
 
+
+
+describe('TEST API.', () => {
+
+   /* 
+    it('Test 1: Add new pet on the story. Id = ' + id, async () => {
+        let apiManager = new ApiManager();
+        let resp = await apiManager.setUrl(petUrl).setMetod('post').setData(petBody).send();
+        console.log("resp ___________ " + resp.data);
+        console.log("resp.status: " + resp.status);
+    });
+
+*/
+
+
+    it('Test 1: ADD pet name. Id = ' + id, async () => {
+        await axios({
+            method: 'post',
+            url: petUrl,
+            data: petBody
+        });
+    });
+
+/*
+    it('Test 1: Add new pet on the story. Id = ' + id, async () => {
+        let resp = await axios.post(petUrl, petBody);
+        //console.log("await resp).data" + (await resp).data);
+        console.log("resp.status: " + resp.status);
+        console.log("resp.config: " + resp.config);
+        console.log("resp.data: " + resp.data);
+        console.log("resp.headers: " + resp.headers);
+        console.log("resp.request: " + resp.request);
+        console.log("resp.statusText: " + resp.statusText);
+        console.log("resp.data.id " + resp.data.id);
+        console.log("resp.data.category.name " + resp.data.category.name);
+        console.log("resp.data.name " + resp.data.name);
+        
+        
+        expect(resp.status).toEqual(200);
+
+
+        //console.log("resp.data.id = " + resp.data.id);
+        //expect((resp.data.id).toEqual(id));
+
+
+    });
+
+*/
+/*
+
+    it('Test 2: Chenge pet name. Id = ' + id, async () => {
+        let resp = axios.put(petUrl, petBodyEdit);
+        //console.log((await resp).data);
+        await expect((await resp).status).toEqual(200);
+    });
+*/
+/*
+    it('Test 3: Delete pet. Id = ' + id, async () => {
+        let resp = axios.delete(petUrl + id);
+        await expect((await resp).status).toEqual(200);
+    });
+
+*/
+
+
+
+
+/*
+
+    let apiManager = new ApiManager();
+
+
+    it('Test 1: Add new pet on the story. Id = ' + id, async () => {
+        apiManager.post();
+    });
+    
+
+    it('Test 2: Delete. Id = ' + id, async () => {
+        apiManager.post();
+    });
+    
+*/
+
+
+
+
+
+
+/*
+
+
+    it('Test 1: Add new pet on the story. Id = ' + id, async () => {
+        let resp = await axios.post(petUrl, petBody);
+        //console.log("await resp).data" + (await resp).data);
+        console.log("resp.status: " + resp.status);
+
+    });
+
+
+
+
+    
+
+    it('Test 2: Chenge pet name. Id = ' + id, async () => {
+        let resp = axios.put(petUrl, petBodyEdit);
+        //console.log((await resp).data);
+        await expect((await resp).status).toEqual(200);
+    });
+
+
+
+
+
+
+
+    it('Test 2: Chenge pet name. Id = ' + id, async () => {
+        let resp = axios.put(petUrl, petBodyEdit);
+        console.log((await resp).data);
+        await expect((await resp).status).toEqual(200);
+    });
+
+
+   
+
+    
+    it('Test 3: Delete pet. Id = ' + id, async () => {
+        let resp = axios.delete(petUrl + id);
+        await expect((await resp).status).toEqual(200);
+    });
+
+    */
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
 
 describe('Login Page. Already existed email. Error appears ', () => {
@@ -25,13 +179,10 @@ describe('Login Page. Already existed email. Error appears ', () => {
         await expect(LoginPage.locatorTextErrorExistedEmail()).toBeExisting();
     });
 
-    it('should save a screenshot of the browser view', async () => {
-        await browser.saveScreenshot('./screenshot.png');
-    });
-
 });
+*/
 
-
+/*
 describe('Login Page. Empty/Wrong email address. Error appears ', () => {
 
     beforeEach(async () => {
@@ -57,3 +208,4 @@ describe('Login Page. Empty/Wrong email address. Error appears ', () => {
 });
 
 
+*/
