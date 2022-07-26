@@ -1,15 +1,18 @@
-import { baseUrl } from "../apiData";
+import { petUrl } from "../apiData";
 import { ApiManager } from "../apiManager"
 
-export const findPetById = async (id: string) =>{
+
+export const findPetById = async (id) =>{
     const request = new ApiManager();
-    return await request.setUrl(`${baseUrl}pet/${id}`).setMetod("GET").send();
+    return await request.setUrl(`${petUrl}${id}`).setMetod("GET").send();
 }
 
+export const createPet = async (petBody) =>{
+    const request = new ApiManager();
+    return await request.setUrl(`${petUrl}`).setMetod("POST").setData(petBody).send();
+}
 
-//створення
-
-//ітд
-
-
-//і дописати контролери для всіх Swagger Swagger 
+export const deletePet = async (id) =>{
+    const request = new ApiManager();
+    return await request.setUrl(`${petUrl}${id}`).setMetod("DELETE").send();
+}

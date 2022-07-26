@@ -2,154 +2,88 @@ import Page from  '../../UI/pageobjects/page/page';
 import LoginPage from '../../UI/pageobjects/loginPage/login.page';
 import BmCreatePage from '../../UI/BusinessModels/bm.createPage';
 import CreatePage from '../../UI/pageobjects/createPage/create.page';
-import allureReporter from '@wdio/allure-reporter';
+
 
 
 import UserData from './userdata';
 
 
-import axios from "axios";
-import { petBody, petUrl, petBodyEdit, id } from '../../Api/apiData';
+
 import { ApiManager } from '../../Api/apiManager';
-import { findPetById } from '../../Api/controlers/petController';
+import { findPetById, createPet, deletePet } from '../../Api/controlers/petController';
+import { findOrderById, createOrder, deleteOrder } from '../../Api/controlers/orderController';
+import { findUserByName, createUser, deleteUser } from '../../Api/controlers/userController';
+import { getPetBody, getOrderBody, getUserBody } from '../../Api/apiData';
+
+const id: number = 70165;
 
 
 
+describe('TEST API. PET', () => {
 
+    
 
-describe('TEST API.', () => {
-
-   
-    it('Test 1: Add new pet on the story. Id = ' + id, async () => {
-        //let apiManager = new ApiManager();
-        //let resp = await apiManager.setUrl(petUrl).setMetod('post').setData(petBody).send();
-        const resp = await findPetById("1");
+    it('PET. Test 1: Add new pet on the story.', async () => {
+        const resp = await createPet(getPetBody(id));
         console.log(resp.data);
+    });
+    
+    it('PET. Test 2: Search by ID.', async () => {
+        const resp = await findPetById(id);
         console.log("resp.status: " + resp.status);
-
-
     });
 
-
-
-/*
-    it('Test 1: ADD pet name. Id = ' + id, async () => {
-        await axios({
-            method: 'post',
-            url: petUrl,
-            data: petBody
-        });
+    it('PET. Test 3: Delete.', async () => {
+        const resp = await deletePet(id);
     });
 
-    */
-/*
-    it('Test 1: Add new pet on the story. Id = ' + id, async () => {
-        let resp = await axios.post(petUrl, petBody);
-        //console.log("await resp).data" + (await resp).data);
+});
+
+
+
+describe('TEST API. ORDER', () => {
+
+    const ordId: number = 2;
+
+    it('STORE. Test 1: Add new pet on the story.', async () => {
+        const resp = await createOrder(getOrderBody(ordId, id));
+        console.log(resp.data);
+    });
+
+    it('STORE. Test 2: Search by ID.', async () => {
+        const resp = await findOrderById(ordId);
         console.log("resp.status: " + resp.status);
-        console.log("resp.config: " + resp.config);
-        console.log("resp.data: " + resp.data);
-        console.log("resp.headers: " + resp.headers);
-        console.log("resp.request: " + resp.request);
-        console.log("resp.statusText: " + resp.statusText);
-        console.log("resp.data.id " + resp.data.id);
-        console.log("resp.data.category.name " + resp.data.category.name);
-        console.log("resp.data.name " + resp.data.name);
-        
-        
-        expect(resp.status).toEqual(200);
-
-
-        //console.log("resp.data.id = " + resp.data.id);
-        //expect((resp.data.id).toEqual(id));
-
-
     });
 
-*/
-/*
-
-    it('Test 2: Chenge pet name. Id = ' + id, async () => {
-        let resp = axios.put(petUrl, petBodyEdit);
-        //console.log((await resp).data);
-        await expect((await resp).status).toEqual(200);
-    });
-*/
-/*
-    it('Test 3: Delete pet. Id = ' + id, async () => {
-        let resp = axios.delete(petUrl + id);
-        await expect((await resp).status).toEqual(200);
+    it('STORE. Test 3: Delete.', async () => {
+        const resp = await deleteOrder(ordId);
     });
 
-*/
+});
 
 
 
 
-/*
-
-    let apiManager = new ApiManager();
 
 
-    it('Test 1: Add new pet on the story. Id = ' + id, async () => {
-        apiManager.post();
+describe('TEST API. USER', () => {
+
+    const userName: string = "MyUsername1";
+
+    it('USER. Test 1: Add new pet on the story.', async () => {
+        const resp = await createUser(getUserBody(userName));
+        console.log(resp.data);
     });
-    
 
-    it('Test 2: Delete. Id = ' + id, async () => {
-        apiManager.post();
-    });
-    
-*/
-
-
-
-
-
-
-/*
-
-
-    it('Test 1: Add new pet on the story. Id = ' + id, async () => {
-        let resp = await axios.post(petUrl, petBody);
-        //console.log("await resp).data" + (await resp).data);
+    it('USER. Test 2: Search by Name.', async () => {
+        const resp = await findUserByName(userName);
         console.log("resp.status: " + resp.status);
-
     });
 
-
-
-
-    
-
-    it('Test 2: Chenge pet name. Id = ' + id, async () => {
-        let resp = axios.put(petUrl, petBodyEdit);
-        //console.log((await resp).data);
-        await expect((await resp).status).toEqual(200);
+    it('USER. Test 3: Delete.', async () => {
+        const resp = await deleteUser(userName);
     });
 
-
-
-
-
-
-
-    it('Test 2: Chenge pet name. Id = ' + id, async () => {
-        let resp = axios.put(petUrl, petBodyEdit);
-        console.log((await resp).data);
-        await expect((await resp).status).toEqual(200);
-    });
-
-
-   
-
-    
-    it('Test 3: Delete pet. Id = ' + id, async () => {
-        let resp = axios.delete(petUrl + id);
-        await expect((await resp).status).toEqual(200);
-    });
-
-    */
 });
 
 
@@ -163,54 +97,3 @@ describe('TEST API.', () => {
 
 
 
-
-
-
-
-
-
-/*
-
-
-describe('Login Page. Already existed email. Error appears ', () => {
-
-    it('Inputs Already existed email. Empty', async () => {
-        allureReporter.addSeverity('Critical');
-        allureReporter.addFeature('Allure. Login Page. Already existed email')
-        await Page.open();
-        await Page.click_login();
-        await LoginPage.set_loginEmailCreate(UserData.existedEmail);
-        await LoginPage.click_btnSubmitCreate();
-        await expect(LoginPage.locatorTextErrorExistedEmail()).toBeExisting();
-    });
-
-});
-*/
-
-/*
-describe('Login Page. Empty/Wrong email address. Error appears ', () => {
-
-    beforeEach(async () => {
-        await Page.open();
-        await browser.pause(2000);
-        await Page.click_login();
-    });
-
-    it('Inputs for user registration. Empty', async () => {
-        allureReporter.addFeature('Allure . Empty/Wrong')
-        await LoginPage.set_loginEmailCreate(UserData.emptyEmail);
-    });
-
-    it('Inputs for user registration. WrongStr', async () => {
-        allureReporter.addFeature('Allure . Empty/Wrong')
-        await LoginPage.set_loginEmailCreate(UserData.wrongEmail);
-    });
-
-    afterEach(async () => {
-        await LoginPage.click_btnSubmitCreate();
-        await expect(LoginPage.locatorErrorEmail()).toBeExisting();
-    });
-});
-
-
-*/
