@@ -1,5 +1,5 @@
 import { ChainablePromiseElement } from 'webdriverio';
-import Locators from '../pageobjects/locators'
+
 //import Userdata from '../../../test/specs/userdata';
 
 const CreatePage = require('./create.page');
@@ -8,7 +8,7 @@ const CreatePage = require('./create.page');
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class BmCreatePage{
+ export class BmCreatePage{
 
     createPage = new CreatePage();
 
@@ -51,4 +51,4 @@ class BmCreatePage{
 
 }
 
-export default new  BmCreatePage();
+

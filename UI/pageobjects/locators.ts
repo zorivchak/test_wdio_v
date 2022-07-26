@@ -1,7 +1,12 @@
 import { ChainablePromiseElement } from 'webdriverio';
 
 
+export const findElement = (locator) =>{
+    return $(locator); 
+}
 
+
+/*
 class Locators {
 
     public getElement(element){
@@ -25,5 +30,5 @@ class Locators {
 
 export default new Locators(); 
 
-
+*/
 

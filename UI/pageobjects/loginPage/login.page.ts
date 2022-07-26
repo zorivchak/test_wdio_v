@@ -1,63 +1,71 @@
 import { ChainablePromiseElement } from 'webdriverio';
 
-import Locators from '../locators';
-import LoginPageLocators from './login.page.locators';
 import allureReporter from '@wdio/allure-reporter';
-
-/**
- * sub page containing specific selectors and methods for a specific page
- */
+import { findElement } from '../locators';
 
 
-class LoginPage{
+export class LoginPage{
                      
-    loginPageLocators = new LoginPageLocators();
+    private email;
+    private emailCreate;
+    private password;
+    private btnSubmit;
+    private btnSubmitCreate;
+    private textErrorEmail;
+    private arrErrorMessages;
+    private textErrorExistedEmail;  
+  
 
-
-
-    /**
-     * a method to encapsule automation code to interact with the page
-     * e.g. to login using username and password
-     */
+    constructor(){
+        this.email = findElement('#email');
+        this.emailCreate = findElement('#email_create');
+        this.password = findElement('#passwd');
+        this.btnSubmit = findElement('#SubmitLogin');
+        this.btnSubmitCreate = findElement('#SubmitCreate');
+        this.textErrorEmail = findElement('#create_account_error');
+        this.arrErrorMessages = ["Invalid email address.",
+                        "An account using this email address has already been registered. Please enter a valid password or request a new one. "];
+        this.textErrorExistedEmail = findElement(".//li[text() = '"+ this.arrErrorMessages[1] +"'] ");  
+    }
+    
 
     public async set_loginEmailCreate(email: string) {
         allureReporter.addStep('Allure. set loginEmailCreate');
-        await Locators.getElement(this.loginPageLocators.emailCreate).setValue(email);
+        await this.emailCreate.setValue(email);
     }
 
     public async set_loginEmail(email: string) {
         allureReporter.addStep('Allure. set loginEmail');
-        await Locators.getElement(this.loginPageLocators.email).setValue(email);
+        await this.email.setValue(email);
     }
 
     public async set_password(password: string) {
         allureReporter.addStep('Allure. set password');
-        await Locators.getElement(this.loginPageLocators.password).setValue(password);
+        await this.password.setValue(password);
     }
 
     public async click_btnSubmit() {
         allureReporter.addStep('Allure. click btn Submit');
-        await Locators.getElement(this.loginPageLocators.btnSubmit).click();
+        await this.btnSubmit.click();
     }
 
     public async click_btnSubmitCreate() {
         allureReporter.addStep('Allure. click btnSubmit Create');
-        await Locators.getElement(this.loginPageLocators.btnSubmitCreate).click();
+        await this.btnSubmitCreate.click();
     }
 
     public async locatorErrorEmail() {
         allureReporter.addStep('Allure. Locator Error Email');
-        return await Locators.getElement(this.loginPageLocators.textErrorEmail);
+        return this.textErrorEmail;
     }
     public async locatorTextErrorExistedEmail() {
         allureReporter.addStep('Allure. locator Text Error Existed Email');
-        return await Locators.getElement(this.loginPageLocators.textErrorExistedEmail);
+        return await this.textErrorExistedEmail;
     }
 
     
 }
 
-export default new LoginPage();
 
 
 
