@@ -11,7 +11,7 @@ export class HeadreComponent{
     }
 
 
-    public async click_login(){
+    async click_login(){
         allureReporter.addStep('Allure. Click login');
         await this.loginButton.waitForDisplayed();
         await this.loginButton.click();

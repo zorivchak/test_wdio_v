@@ -50,3 +50,64 @@ class UserData {
 }
 
 export default new UserData();
+
+
+export type typeUser = {
+    arrGender: string[];
+    gender: string;
+    firstName: string;
+    lastName: string;
+
+    password: string;
+
+    day: string;
+    month: string;
+    year: string;
+
+    company: string;
+    adress1: string;
+    adress2: string;
+
+    city: string;
+    State: string;
+    postcode: string;
+    country: string;
+    other: string;
+
+    phone: string;
+    mobPhone: string;
+    alias: string;
+
+  };
+  
+
+export const myUser: typeUser = {
+    arrGender: [" Mr. ", " Mrs. "],
+    gender: " Mr. ",
+    firstName: "Ivan",
+    lastName: "Petrovych",
+
+    password: "my_password_123_",
+
+    day: "10",
+    month: "4",
+    year: "2000",
+
+    company: "sdadasdasd5",
+    adress1: "Shevchenka str.",
+    adress2: "Shevchenka str.",
+
+    city: "New York",
+    State: "2",
+    postcode: "79065",
+    country: "21",
+    other: "Other information",
+
+    phone: "+655225544234",
+    mobPhone: "+65522554444",
+    alias: "Other information"
+  };
+
+
+
+

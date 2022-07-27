@@ -10,7 +10,8 @@ import { BmCreatePage } from '../../UI/BusinessModels/bm.createPage';
 import { CreatePage } from '../../UI/pageobjects/createPage/create.page';
 
 
-
+//var chai = require('chai');
+//var should = require('chai').should() 
 
 
 
@@ -29,7 +30,11 @@ describe('Login Page. Already existed email. Error appears ', () => {
         const loginPage = new LoginPage();
         await loginPage.set_loginEmailCreate(UserData.existedEmail);
         await loginPage.click_btnSubmitCreate();
-        await expect(loginPage.locatorTextErrorExistedEmail()).toBeExisting();
+        //await expect(loginPage.locatorTextErrorExistedEmail()).toBeExisting();
+        await loginPage.toBeExisting_textErrorExistedEmail();
+
+
+        
     });
 });
 
@@ -58,7 +63,7 @@ describe('Login Page. Empty/Wrong email address. Error appears ', () => {
     afterEach(async () => {
         const loginPage = new LoginPage();
         await loginPage.click_btnSubmitCreate();
-        await expect(loginPage.locatorErrorEmail()).toBeExisting();
+        await loginPage.toBeExisting_locatorErrorEmail();
     });
 });
 
@@ -80,7 +85,7 @@ describe('Login Page. Success User registeration ', () => {
         const createPage = new CreatePage();
         await createPage.click_btnRegister();
 
-        await expect(createPage.getTextMyAcount()).toBeExisting();
+        await createPage.toBeExisting_getTextMyAcount();
     });
 
 });

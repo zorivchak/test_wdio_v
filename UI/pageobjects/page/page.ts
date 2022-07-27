@@ -9,20 +9,14 @@ import { HeadreComponent } from '../components/headerComponent';
 
 export class Page{
 
-    public header;
+    header;
 
     constructor(){
         this.header = new HeadreComponent();
     }
-    
-
-        
-    //mainLogo = '.logo.img-responsive';
-    //login = '.login';
-    //women = 'Women';
 
     ///////////////////////////////////////////////////////////
-    public open () {
+    open () {
         return browser.url('/')
     }
 }

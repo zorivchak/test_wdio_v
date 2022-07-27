@@ -29,41 +29,47 @@ export class LoginPage{
     }
     
 
-    public async set_loginEmailCreate(email: string) {
+    async set_loginEmailCreate(email: string) {
         allureReporter.addStep('Allure. set loginEmailCreate');
         await this.emailCreate.setValue(email);
     }
 
-    public async set_loginEmail(email: string) {
+    async set_loginEmail(email: string) {
         allureReporter.addStep('Allure. set loginEmail');
         await this.email.setValue(email);
     }
 
-    public async set_password(password: string) {
+    async set_password(password: string) {
         allureReporter.addStep('Allure. set password');
         await this.password.setValue(password);
     }
 
-    public async click_btnSubmit() {
+    async click_btnSubmit() {
         allureReporter.addStep('Allure. click btn Submit');
         await this.btnSubmit.click();
     }
 
-    public async click_btnSubmitCreate() {
+    async click_btnSubmitCreate() {
         allureReporter.addStep('Allure. click btnSubmit Create');
         await this.btnSubmitCreate.click();
     }
 
-    public async locatorErrorEmail() {
+    async locatorErrorEmail() {
         allureReporter.addStep('Allure. Locator Error Email');
         return this.textErrorEmail;
     }
-    public async locatorTextErrorExistedEmail() {
+    async locatorTextErrorExistedEmail() {
         allureReporter.addStep('Allure. locator Text Error Existed Email');
         return await this.textErrorExistedEmail;
     }
-
     
+    async toBeExisting_textErrorExistedEmail(){
+        await expect(this.locatorTextErrorExistedEmail()).toBeExisting();
+    }
+    
+    async toBeExisting_locatorErrorEmail() {
+        await expect(this.locatorErrorEmail()).toBeExisting();
+    }
 }
 
 

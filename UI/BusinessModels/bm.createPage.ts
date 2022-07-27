@@ -1,4 +1,5 @@
 import { ChainablePromiseElement } from 'webdriverio';
+import { myUser, typeUser } from '../../test/specs/userdata';
 
 //import Userdata from '../../../test/specs/userdata';
 
@@ -13,40 +14,40 @@ const CreatePage = require('./create.page');
     createPage = new CreatePage();
 
 
-    public async setPersonalInformation(object){
-        await this.createPage.click_RadioGender(object.gender);
+    async setPersonalInformation(myUser: typeUser){
+        await this.createPage.click_RadioGender(myUser.gender);
         
-        await this.createPage.set_FirstName(object.firstName);
-        await this.createPage.set_LastName(object.lastName);
-        await this.createPage.set_Password(object.password);
-        await this.createPage.set_Day(object.day);
-        await this.createPage.set_Month(object.month);
-        await this.createPage.set_Year(object.year);
+        await this.createPage.set_FirstName(myUser.firstName);
+        await this.createPage.set_LastName(myUser.lastName);
+        await this.createPage.set_Password(myUser.password);
+        await this.createPage.set_Day(myUser.day);
+        await this.createPage.set_Month(myUser.month);
+        await this.createPage.set_Year(myUser.year);
     }
 
 
-    public async setAdressInformation(object){
-        await this.createPage.set_Company(object.company);
-        await this.createPage.set_Adress1(object.adress1);
-        await this.createPage.set_Adress2(object.adress2);
+    async setAdressInformation(myUser: typeUser){
+        await this.createPage.set_Company(myUser.company);
+        await this.createPage.set_Adress1(myUser.adress1);
+        await this.createPage.set_Adress2(myUser.adress2);
 
-        await this.createPage.set_City(object.city);
-        await this.createPage.set_State(object.State);
-        await this.createPage.set_postCode(object.postcode);
+        await this.createPage.set_City(myUser.city);
+        await this.createPage.set_State(myUser.State);
+        await this.createPage.set_postCode(myUser.postcode);
 
-        await this.createPage.set_Countries(object.country);
-        await this.createPage.set_Other(object.other);
+        await this.createPage.set_Countries(myUser.country);
+        await this.createPage.set_Other(myUser.other);
 
-        await this.createPage.set_Phone(object.phone);
-        await this.createPage.set_MobPhone(object.mobPhone);
-        await this.createPage.set_Alias(object.alias);
+        await this.createPage.set_Phone(myUser.phone);
+        await this.createPage.set_MobPhone(myUser.mobPhone);
+        await this.createPage.set_Alias(myUser.alias);
     }
 
 
 
-    public async setAllInformation(object){
-        await this.setPersonalInformation(object);
-        await this.setAdressInformation(object);
+    public async setAllInformation(myUser: typeUser){
+        await this.setPersonalInformation(myUser);
+        await this.setAdressInformation(myUser);
     }
 
 }

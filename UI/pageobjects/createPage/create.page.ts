@@ -64,36 +64,36 @@ export class CreatePage{
     }
 
 
-    public async click_RadioGender(gender){
+    async click_RadioGender(){
         await this.radioGender.click();
     }    
 
-    public async set_FirstName(name: string) {
+    async set_FirstName(name: string) {
         await this.inputFirstName.setValue(name);
     }
 
-    public async set_LastName(name: string) {
+    async set_LastName(name: string) {
         await this.inputLastName.setValue(name);
     }
 
-    public async set_Password(password: string) {
+    async set_Password(password: string) {
         await this.inputPasswd.setValue(password);
     }
 
 
     /////////////////////////////////////
 
-    public async set_Day(day: string) {
+    async set_Day(day: string) {
         
         await this.cbxDays.selectByAttribute('value', day);
     }
 
-    public async set_Month(month: string) {
+    async set_Month(month: string) {
         await this.cbxMonths.selectByAttribute('value', month);
     }
 
 
-    public async set_Year(year: string) {
+    async set_Year(year: string) {
         await this.cbxYears.selectByAttribute('value', year);
     }
 
@@ -102,63 +102,65 @@ export class CreatePage{
 
 
     ///////////////////////////////////////
-    public async set_Company(comp: string) {
+    async set_Company(comp: string) {
         await this.inputCompany.setValue(comp);
     }
 
-    public async set_Adress1(adress: string) {
+    async set_Adress1(adress: string) {
         await this.inputAddress1.setValue(adress);
     }
 
-    public async set_Adress2(adress: string) {
+    async set_Adress2(adress: string) {
         await this.inputAddress2.setValue(adress);
     }
 
-    public async set_City(city: string) {
+    async set_City(city: string) {
         await this.inputCity.setValue(city);
     }
 
 
-    public async set_State(state: string) {
+    async set_State(state: string) {
         await this.cbxStates.selectByAttribute('value', state);
     }
 
-    public async set_postCode(code: string) {
+    async set_postCode(code: string) {
         await this.inputPostcode.setValue(code);
     }
 
 
-    public async set_Countries(country: string) {
+    async set_Countries(country: string) {
         await this.cbxCountries.selectByAttribute('value', country);
     }
 
 
-    public async set_Other(other: string) {
+    async set_Other(other: string) {
         await this.inputOther.setValue(other);
     }
 
-    public async set_Phone(numb: string) {
+    async set_Phone(numb: string) {
         await this.inputPhone.setValue(numb);
     }
 
-    public async set_MobPhone(numb: string) {
+    async set_MobPhone(numb: string) {
         await this.inputPhoneMobile.setValue(numb);
     }
 
-    public async set_Alias(data: string) {
+    async set_Alias(data: string) {
         await this.inputAlias.setValue(data);
     }
 
 
-    public async click_btnRegister(){
+    async click_btnRegister(){
         await this.btnRegister.click();
     } 
 
-    public async getTextMyAcount(){
+    async getTextMyAcount(){
         return await this.textMyAccount;
     }
     
-
+    async toBeExisting_getTextMyAcount(){
+        await expect(this.getTextMyAcount()).toBeExisting();
+    }
 }
 
 
