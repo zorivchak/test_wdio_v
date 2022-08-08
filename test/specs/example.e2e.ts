@@ -2,12 +2,14 @@
 
 import allureReporter from '@wdio/allure-reporter';
 
-import UserData from './userdata';
+import UserData, { myUser } from './userdata';
 
-import { Page } from '../../UI/pageobjects/page/page';
-import { LoginPage } from '../../UI/pageobjects/loginPage/login.page';
-import { BmCreatePage } from '../../UI/BusinessModels/bm.createPage';
-import { CreatePage } from '../../UI/pageobjects/createPage/create.page';
+import { Page } from '../../UI/pageobjects/page/mainPage';
+import { LoginPage } from '../../UI/pageobjects/loginPage/loginPage';
+import { setAllInformation } from '../../UI/BusinessModels/createUserPageBussinessModel';
+import { CreatePage } from '../../UI/pageobjects/createPage/createUserPage';
+import { goToLoginPage } from '../../UI/BusinessModels/mainPageBussinessModel';
+import { set_loginEmailCreate, set_loginEmailCreateSubmit } from '../../UI/BusinessModels/loginPageBussinessModel';
 
 
 //var chai = require('chai');
@@ -15,26 +17,20 @@ import { CreatePage } from '../../UI/pageobjects/createPage/create.page';
 
 
 
-
+/*
 describe('Login Page. Already existed email. Error appears ', () => {
 
     it('Inputs Already existed email. Empty', async () => {
         allureReporter.addSeverity('Critical');
         allureReporter.addFeature('Allure. Login Page. Already existed email')
 
-        const mainPage = new Page();
-        await mainPage.open();
-        await mainPage.header.click_login();
-
+        await goToLoginPage();
+        await set_loginEmailCreateSubmit(UserData.existedEmail);
 
         const loginPage = new LoginPage();
-        await loginPage.set_loginEmailCreate(UserData.existedEmail);
-        await loginPage.click_btnSubmitCreate();
-        //await expect(loginPage.locatorTextErrorExistedEmail()).toBeExisting();
         await loginPage.toBeExisting_textErrorExistedEmail();
-
-
-        
+        //await expect(loginPage.locatorTextErrorExistedEmail()).toBeExisting();
+  
     });
 });
 
@@ -43,21 +39,17 @@ describe('Login Page. Already existed email. Error appears ', () => {
 describe('Login Page. Empty/Wrong email address. Error appears ', () => {
 
     beforeEach(async () => {
-        const mainPage = new Page();
-        await mainPage.open();
-        await mainPage.header.click_login();
+        await goToLoginPage();
     });
 
     it('Inputs for user registration. Empty', async () => {
         allureReporter.addFeature('Allure . Empty/Wrong');
-        const loginPage = new LoginPage();
-        await loginPage.set_loginEmailCreate(UserData.emptyEmail);
+        await set_loginEmailCreate(UserData.emptyEmail);
     });
 
     it('Inputs for user registration. WrongStr', async () => {
         allureReporter.addFeature('Allure . Empty/Wrong')
-        const loginPage = new LoginPage();
-        await loginPage.set_loginEmailCreate(UserData.wrongEmail);
+        await set_loginEmailCreate(UserData.wrongEmail);
     });
 
     afterEach(async () => {
@@ -66,27 +58,23 @@ describe('Login Page. Empty/Wrong email address. Error appears ', () => {
         await loginPage.toBeExisting_locatorErrorEmail();
     });
 });
+*/
 
 
 describe('Login Page. Success User registeration ', () => {
 
     it('Create new user. User created successfully', async () => {
-        const mainPage = new Page();
-        await mainPage.open();
-        await mainPage.header.click_login();
-
-        const loginPage = new LoginPage();
-        await loginPage.set_loginEmailCreate(UserData.newEmail);
-        await loginPage.click_btnSubmitCreate();
+        await goToLoginPage();
+        await set_loginEmailCreateSubmit(UserData.newEmail);
+        await setAllInformation(myUser);
         
-        const bm = new BmCreatePage();
-        await bm.setAllInformation(UserData);
 
         const createPage = new CreatePage();
         await createPage.click_btnRegister();
-
         await createPage.toBeExisting_getTextMyAcount();
+    
     });
 
 });
+
 

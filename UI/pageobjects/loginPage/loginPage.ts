@@ -3,6 +3,7 @@ import { ChainablePromiseElement } from 'webdriverio';
 import allureReporter from '@wdio/allure-reporter';
 import { findElement } from '../locators';
 
+const expectChai = require('chai').expect;
 
 export class LoginPage{
                      
@@ -63,13 +64,24 @@ export class LoginPage{
         return await this.textErrorExistedEmail;
     }
     
+    
     async toBeExisting_textErrorExistedEmail(){
-        await expect(this.locatorTextErrorExistedEmail()).toBeExisting();
+        await expectChai(this.locatorTextErrorExistedEmail()).to.exist;
     }
     
     async toBeExisting_locatorErrorEmail() {
-        await expect(this.locatorErrorEmail()).toBeExisting();
+        //await expect(this.locatorErrorEmail()).toBeExisting();
+        await expectChai(this.locatorErrorEmail()).to.exist;
+
+
     }
+
+/*
+    async setEmailSubmit(email : string){
+        await this.set_loginEmailCreate(email);
+        await this.click_btnSubmitCreate();
+    }
+    */
 }
 
 

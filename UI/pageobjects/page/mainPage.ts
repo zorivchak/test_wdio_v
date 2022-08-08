@@ -19,6 +19,9 @@ export class Page{
     open () {
         return browser.url('/')
     }
+
+
+    
 }
 
 

@@ -1,10 +1,6 @@
 import { ChainablePromiseElement } from 'webdriverio';
-//import Locators from '../locators';
-//import Userdata from '../../../test/specs/userdata';
-
-const CreatePageLocators = require('./create.page.locators');
-
 import { findElement } from '../locators';
+
 /**
  * sub page containing specific selectors and methods for a specific page
  */
@@ -60,7 +56,7 @@ export class CreatePage{
         this.inputPhoneMobile = findElement('#phone_mobile');
         this.inputAlias = findElement('#alias');
         this.btnRegister = findElement('#submitAccount');
-        this.textMyAccount = findElement('My account');
+        this.textMyAccount = findElement('.page-heading');
     }
 
 
