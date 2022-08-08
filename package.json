@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "report": "allure generate allure-results && allure open"
+    "test": "npx wdio run wdio.conf.ts",
+    "report": "allure generate allure-results/ --clean && allure open"
   },
   "keywords": [
     "test"
