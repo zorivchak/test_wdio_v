@@ -1,10 +1,3 @@
-import Page from  '../../UI/pageobjects/page/page';
-import LoginPage from '../../UI/pageobjects/loginPage/login.page';
-import BmCreatePage from '../../UI/BusinessModels/bm.createPage';
-import CreatePage from '../../UI/pageobjects/createPage/create.page';
-
-
-
 import UserData from './userdata';
 
 
